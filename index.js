@@ -1,27 +1,34 @@
-class Hero {
-    constructor(name, age, type) {
-        this.name = name;
-        this.age = age;
-
-        this.types = ["mago", "guerreiro", "monge", "ninja"];
-        this.attacks = ["magia", "espada", "artes marciais", "shuriken"]
-        this.type = type % this.types.length;
+// Definindo a classe Heroi
+class Heroi {
+    constructor(nome, idade, tipo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipo = tipo;
     }
-    getType() {
-        return this.types[this.type];
-    }
-    getAttack() {
-        return this.attacks[this.type];
-    }
-    attack() {
-        console.log(`O ${this.getType()} atacou usando ${this.getAttack()}`);
-    }
-    info() {
-        console.log(`Nome: ${this.name}, idade: ${this.age}, Tipo: ${this.getType()}`);
+    atacar() {
+        let ataque;
+        switch (this.tipo) {
+            case 'mago':
+                ataque = 'usou magia';
+                break;
+            case 'guerreiro':
+                ataque = 'usou espada';
+                break;
+            case 'monge':
+                ataque = 'usou artes marciais';
+                break;
+            case 'ninja':
+                ataque = 'usou shuriken';
+                break;
+            default:
+                ataque = 'atacou';
+        }
+        console.log(`O ${this.tipo} atacou usando ${ataque}`);
     }
 }
 
-for(let i = 0; i < 4; i++) {
-    let totosay = new Hero("totosay", 0, i);
-    totosay.attack();
-}
+// Criando uma instância de Heroi
+const meuHeroi = new Heroi('Aragorn', 35, 'guerreiro');
+
+// Chamando o método atacar da instância criada
+meuHeroi.atacar();
